@@ -124,12 +124,21 @@
     const jumlahKlikElemenB = document.getElementById('jumlahKlikB');
 
     document.getElementById('tambahNilaiB').addEventListener('click', function () {
-        nilaiB += penjumlahan
-        jumlahKlikB++
+        if (jumlahKlikB < 9) {
+            nilaiB += penjumlahan;
+            jumlahKlikB++;
 
-        nilaiElemenB.textContent = nilaiB.toFixed(2); // Menampilkan nilai dengan 2 desimal
-        jumlahKlikElemenB.textContent = jumlahKlikB;
-    })
+            nilaiElemenB.textContent = nilaiB.toFixed(2);
+            jumlahKlikElemenB.textContent = jumlahKlikB;
+        } else {
+            // Tambahkan aksi ketika jumlah klik mencapai batas maksimum (10)
+            Swal.fire({
+                icon: 'warning',
+                title: 'Batas Maksimum Terlampaui!',
+                text: 'Anda telah mencapai nilai maksimum 0.10',
+            });
+        }
+    });
 
 
     document.getElementById('simpan').addEventListener('click', function () {
